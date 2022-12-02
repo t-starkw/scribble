@@ -11,7 +11,7 @@ class Store {
         return readFileAsync('db/db.json', 'utf-8');
     }
 
-    write() {
+    write(note) {
         return writeFileAsync('db/db.json', JSON.stringify(note));
     }
     getNotes() {
@@ -43,6 +43,11 @@ class Store {
             .then((notes) => [...notes, newNote])
             .then((updatedNotes) => this.write(updatedNotes))
             .then(() => newNote)
+    }
+    deleteNote(id) {
+        return this.getNotes()
+            .then((notes) => notes.filter((note) => note.id !== id))
+            .then((filteredNotes) => this.write(filteredNotes));
     }
 }
 
