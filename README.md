@@ -20,7 +20,7 @@
 
   ## Usage
   > You can use this application by navigating to the link below!<br>
-  > [Heroku link]
+  > [Take Some Notes!](https://dry-mesa-78992.herokuapp.com/)
 
   ## Tests
   >N/A
