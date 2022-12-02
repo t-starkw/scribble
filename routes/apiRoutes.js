@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const store = require('../db/storage')
+const store = require('../db/store')
 
 
 // GET request for reading notes in db storage and return notes as json
@@ -20,5 +20,12 @@ router.post('/notes', (req, res) => {
 
 });
 // **DELETE request to recieve id of note to delete -> read all notes from storage -> remove note with given id -> rewrite notes to db
+router.delete('/notes/:id', (req, res) => {
+  store
+    .deleteNote(req.params.id)
+    .then(() => res.json({ ok: true }))
+    .catch((err) => res.status(500).json(err));
+});
+
 
 module.exports = router;
